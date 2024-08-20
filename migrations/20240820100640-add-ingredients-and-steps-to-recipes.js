@@ -4,13 +4,11 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.addColumn('Recipes', 'ingredients', {
       type: Sequelize.TEXT,
-      allowNull: false,
-      defaultValue: '',
+      allowNull: true,
     });
     await queryInterface.addColumn('Recipes', 'steps', {
       type: Sequelize.TEXT,
-      allowNull: false,
-      defaultValue: '',
+      allowNull: true,
     });
   },
 

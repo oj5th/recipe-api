@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     ingredients: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     steps: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
   });
 

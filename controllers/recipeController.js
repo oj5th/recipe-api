@@ -2,9 +2,9 @@ const db = require('../models');
 
 exports.createRecipe = async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, ingredients, steps } = req.body;
     const imageUrl = req.file ? req.file.path : null;
-    const recipe = await db.Recipe.create({ title, description, imageUrl, userId: req.user.id });
+    const recipe = await db.Recipe.create({ title, description, imageUrl, ingredients, steps, userId: req.user.id });
     res.status(201).json(recipe);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -39,9 +39,9 @@ exports.updateRecipe = async (req, res) => {
       return res.status(404).json({ message: 'Recipe not found or unauthorized' });
     }
 
-    const { title, description } = req.body;
+    const { title, description, ingredients, steps } = req.body;
     const imageUrl = req.file ? req.file.path : recipe.imageUrl;
-    await recipe.update({ title, description, imageUrl });
+    await recipe.update({ title, description, imageUrl, ingredients, steps });
 
     res.json(recipe);
   } catch (err) {
